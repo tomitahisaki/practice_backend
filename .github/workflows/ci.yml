@@ -37,23 +37,17 @@ jobs:
       - name: Lint code for consistent style
         run: bin/rubocop -f github
 
-  test:
+  rspec:
     runs-on: ubuntu-latest
 
     services:
       postgres:
         image: postgres
         env:
-          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_PASSWORD: password
         ports:
           - 5432:5432
         options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
-
-      # redis:
-      #   image: redis
-      #   ports:
-      #     - 6379:6379
-      #   options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
       - name: Install packages
@@ -69,13 +63,14 @@ jobs:
           bundler-cache: true
 
       - name: Setup database
-        run: |
-          cp config/database.ci.yml config/database.yml
-          bundle exec rails db:prepare RAILS_ENV=test
-
-      - name: Run Rspec
         env:
           RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432
-          # REDIS_URL: redis://localhost:6379/0
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: 5432
+        run: |
+          cp config/database.ci.yml config/database.yml
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:migrate RAILS_ENV=test
+
+      - name: Run Rspec
         run: bundle exec rspec
