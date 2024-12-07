@@ -63,6 +63,11 @@ jobs:
           bundler-cache: true
 
       - name: Setup database
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          PGUSER: postgres
+          PGPASSWORD: password
         run: |
           bundle exec rails db:create RAILS_ENV=test
           bundle exec rails db:migrate RAILS_ENV=test
