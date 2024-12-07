@@ -61,9 +61,6 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-      - name: Test PostgreSQL connection
-        run: psql -h db -U postgres -c '\l'
-
 
       - name: Setup database
         run: |
