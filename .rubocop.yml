@@ -1,8 +1,135 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+require: rubocop-rails
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+# .rubocop.yml
+AllCops:
+  TargetRubyVersion: 3.0 # 使用しているRubyのバージョン
+  NewCops: enable
+  Exclude:
+    - 'bin/*'
+    - 'config/**/*'
+    - 'db/queue_schema.rb'
+    - 'db/schema.rb'
+    - 'db/migrate/*.rb'
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+
+# レイアウト関連ルール
+Layout/LineLength:
+  Max: 120 # 1行の文字数を100文字以下に制限
+
+Layout/EmptyLines:
+  Enabled: true # 不要な空行を禁止
+
+# メトリクス関連ルール（コード量の制限）
+Metrics/MethodLength:
+  Max: 10 # メソッドの最大行数を10行に制限
+
+Metrics/BlockLength:
+  Max: 15 # ブロックの最大行数を15行に制限
+
+Metrics/ClassLength:
+  Max: 150 # クラスの最大行数を150行に制限
+
+Metrics/ParameterLists:
+  Max: 5 # メソッドの引数の最大数を5に制限
+
+Metrics/AbcSize:
+  Max: 15 # ABC サイズ（複雑さの指標）を制限
+
+# スタイル関連ルール
+Style/Documentation:
+  Enabled: false # クラスやモジュールにドキュメントコメントを必須化
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes # 文字列リテラルはシングルクォート
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19 # ハッシュは新しい記法を使用
+
+Style/GuardClause:
+  Enabled: true # 複雑な条件文ではなく、ガード節を推奨
+
+Style/NumericLiterals:
+  Enabled: true # 大きな数値にはアンダースコアを使用（例: 1_000）
+
+# リンター関連
+Lint/AmbiguousBlockAssociation:
+  Enabled: true # 曖昧なブロックの関連付けを禁止
+
+Lint/UselessAssignment:
+  Enabled: true # 使われない変数代入を警告
+
+Lint/RedundantCopDisableDirective:
+  Enabled: true # 不要なCopの無効化コメントを警告
+
+# Rails 特有のルール
+Rails:
+  Enabled: true # Rails 関連の Cop を有効化
+
+Rails/HasAndBelongsToMany:
+  Enabled: true # `has_and_belongs_to_many`の使用を警告
+
+Rails/OutputSafety:
+  Enabled: true # `html_safe`の誤用を警告
+
+Rails/TimeZone:
+  Enabled: true # タイムゾーンなしでの日時操作を警告
+
+Rails/ActiveRecordCallbacksOrder:
+  Enabled: true # コールバックは推奨される順序で定義
+
+Rails/Delegate:
+  Enabled: true # `delegate`メソッドの使用を推奨
+
+Rails/SaveBang:
+  Enabled: true # `save!`や`update!`を使用してエラーを明示化
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+
+Rails/FilePath:
+  EnforcedStyle: slashes
+
+Rails/FindBy:
+  Enabled: true
+
+Rails/FindEach:
+  Enabled: true
+
+Rails/SkipsModelValidations:
+  Enabled: true
+# メトリクス関連
+Metrics/BlockNesting:
+  Max: 3 # Allow for practical nesting scenarios
+
+Metrics/PerceivedComplexity:
+  Max: 8 # 認知的複雑さを制限
+
+Metrics/CyclomaticComplexity:
+  Max: 8 # サイクロマチック複雑度を制限
+
+# コードスタイル
+Style/RedundantReturn:
+  Enabled: true # 不要な`return`を禁止
+
+Style/SafeNavigation:
+  Enabled: true # 安全ナビゲーション演算子の使用を推奨（`&.`）
+
+Style/ClassAndModuleChildren:
+  Enabled: true # ネストされたクラス・モジュールを明確に記述
+
+# メソッド設計
+Naming/MethodParameterName:
+  Enabled: true # 引数名を明確に
+
+Lint/UnusedMethodArgument:
+  Enabled: true # 使われないメソッド引数を警告
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: true # 外部変数のシャドーイングを警告
+
+
