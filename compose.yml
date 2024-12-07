@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:17
+    platform: linux/amd64
+    hostname: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports: 
+      - "5432:5432"
+    networks:
+      - custom_network
+
+  app:
+    build: &build_app
+      context: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/app
+    environment:
+      DB_HOST: db
+    ports:
+      - "3000:3000"
+    networks:
+        - custom_network
+    tty: true
+    stdin_open: true
+
+volumes:
+  db-data:
+
+networks:
+  custom_network:
+    driver: bridge
+
