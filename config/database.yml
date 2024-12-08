@@ -19,11 +19,11 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres
-  password: password
+  password:
+  host: db
 
 development:
   <<: *default
-  host: db
   database: backpacker_backend_pg_development
 
   # The specified database role being used to connect to PostgreSQL.
@@ -58,7 +58,6 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  host: db
   database: backpacker_backend_pg_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -84,10 +83,6 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    url: <%= ENV['DATABASE_URL'] %>
-    # database: backpacker_backend_pg_production
-    # username: backpacker_backend_pg
-    # password: <%= ENV["BACKPACKER_BACKEND_PG_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: backpacker_backend_pg_production_cache
