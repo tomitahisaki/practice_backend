@@ -4,8 +4,14 @@ class SampleJob < ApplicationJob
   queue_as :default
 
   def perform(*_args)
-    Rails.logger.debug "I'm starting job"
+    log_message('Starting the job')
     sleep 5
-    Rails.logger.debug "I'm finishing job"
+    log_message('Finishing the job')
+  end
+
+  private
+
+  def log_message(message)
+    $stdout.puts(message)
   end
 end
