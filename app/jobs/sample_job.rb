@@ -3,9 +3,9 @@
 class SampleJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
-    puts "I'm starting job"
+  def perform(*_args)
+    Rails.logger.debug "I'm starting job"
     sleep 5
-    puts "I'm finishing job"
+    Rails.logger.debug "I'm finishing job"
   end
 end
