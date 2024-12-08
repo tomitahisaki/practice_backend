@@ -41,17 +41,21 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      postgres:
-        image: postgres
+      mysql:
+        image: mysql:8.0
         env:
-          POSTGRES_PASSWORD: password
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
         ports:
-          - 5432:5432
-        options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -p${MYSQL_ROOT_PASSWORD}"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
 
     steps:
       - name: Install packages
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libvips postgresql-client
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libvips mysql-client
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -63,10 +67,6 @@ jobs:
           bundler-cache: true
 
       - name: Setup database
-        env:
-          RAILS_ENV: test
-          POSTGRES_HOST: localhost
-          POSTGRES_PORT: 5432
         run: |
           cp config/database.ci.yml config/database.yml
           bundle exec rails db:create RAILS_ENV=test
