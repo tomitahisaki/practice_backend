@@ -83,9 +83,10 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: backpacker_backend_pg_production
-    username: backpacker_backend_pg
-    password: <%= ENV["BACKPACKER_BACKEND_PG_DATABASE_PASSWORD"] %>
+    url: <%= ENV['DATABASE_URL'] %>
+    # database: backpacker_backend_pg_production
+    # username: backpacker_backend_pg
+    # password: <%= ENV["BACKPACKER_BACKEND_PG_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: backpacker_backend_pg_production_cache
