@@ -40,37 +40,42 @@ jobs:
   rspec:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_PASSWORD: password
-        ports:
-          - 5432:5432
-        options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
 
-    steps:
-      - name: Install packages
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libvips postgresql-client
+  services:
+    mysql:
+      image: mysql:8.0
+      env:
+        MYSQL_ROOT_PASSWORD: password
+      ports:
+        - 3306:3306
+      options: >-
+        --health-cmd="mysqladmin ping -h localhost -p${MYSQL_ROOT_PASSWORD}"
+        --health-interval=10s
+        --health-timeout=5s
+        --health-retries=3
 
-      - name: Checkout code
-        uses: actions/checkout@v4
+  steps:
+    - name: Install packages
+      run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libvips mysql-client
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: .ruby-version
-          bundler-cache: true
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Setup database
-        env:
-          RAILS_ENV: test
-          POSTGRES_HOST: localhost
-          POSTGRES_PORT: 5432
-        run: |
-          cp config/database.ci.yml config/database.yml
-          bundle exec rails db:create RAILS_ENV=test
-          bundle exec rails db:migrate RAILS_ENV=test
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: .ruby-version
+        bundler-cache: true
 
-      - name: Run Rspec
-        run: bundle exec rspec
+    - name: Setup database
+      env:
+        RAILS_ENV: test
+        MYSQL_HOST: localhost
+        MYSQL_PORT: 3306
+        MYSQL_ROOT_PASSWORD: password
+      run: |
+        bundle exec rails db:create RAILS_ENV=test
+        bundle exec rails db:migrate RAILS_ENV=test
+
+    - name: Run Rspec
+      run: bundle exec rspec
