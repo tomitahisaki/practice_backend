@@ -1,11 +1,13 @@
 default: &default
   adapter: mysql2
   encoding: utf8mb4
+  username: root
+  password:
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: localhost
+  host: 127.0.0.1
 
 test:
   <<: *default
-  database: backpacker_backend_pg_test
+  database: backpacker_backend_test

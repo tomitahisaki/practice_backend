@@ -44,7 +44,7 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_ROOT_PASSWORD: password
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
         ports:
           - 3306:3306
         options: >-
@@ -67,11 +67,6 @@ jobs:
           bundler-cache: true
 
       - name: Setup database
-        env:
-          RAILS_ENV: test
-          MYSQL_HOST: localhost
-          MYSQL_PORT: 3306
-          MYSQL_ROOT_PASSWORD: password
         run: |
           cp config/database.ci.yml config/database.yml
           bundle exec rails db:create RAILS_ENV=test
