@@ -4,14 +4,10 @@ class SampleJob < ApplicationJob
   queue_as :default
 
   def perform(*_args)
-    log_message('Starting the job')
-    sleep 5
-    log_message('Finishing the job')
-  end
-
-  private
-
-  def log_message(message)
-    $stdout.puts(message)
+    country_code = '0060'
+    data = CountryDataFetchService.new(country_code:).fetch_data
+    country_detail = CountryDetail.find_or_initialize_by(country_code: country_code)
+    country_detail.update!(data)
+    binding.pry
   end
 end
