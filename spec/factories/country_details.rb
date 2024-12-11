@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: contry_details
+# Table name: country_details
 #
 #  id                 :integer          not null, primary key
 #  area_code          :string(255)
