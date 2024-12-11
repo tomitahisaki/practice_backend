@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_08_071529) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_09_210252) do
+  create_table "contry_details", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "area_code"
+    t.string "area_name"
+    t.integer "contry_code"
+    t.string "contry_name"
+    t.integer "risk_level"
+    t.integer "infection_level"
+    t.text "visa_information"
+    t.text "stay_notice"
+    t.text "culture_and_health"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "solid_queue_blocked_executions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "job_id", null: false
     t.string "queue_name", null: false
