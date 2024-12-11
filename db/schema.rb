@@ -12,10 +12,10 @@
 
 ActiveRecord::Schema[8.0].define(version: 2024_12_09_210252) do
   create_table "contry_details", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "area_code"
+    t.string "area_code"
     t.string "area_name"
-    t.integer "contry_code"
-    t.string "contry_name"
+    t.string "country_code"
+    t.string "country_name"
     t.integer "risk_level"
     t.integer "infection_level"
     t.text "visa_information"

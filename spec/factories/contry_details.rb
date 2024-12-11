@@ -3,10 +3,10 @@
 # Table name: contry_details
 #
 #  id                 :integer          not null, primary key
-#  area_code          :integer
+#  area_code          :string(255)
 #  area_name          :string(255)
-#  contry_code        :integer
-#  contry_name        :string(255)
+#  country_code       :string(255)
+#  country_name       :string(255)
 #  risk_level         :integer
 #  infection_level    :integer
 #  visa_information   :text(65535)
