@@ -20,8 +20,6 @@ Layout/LineLength:
 
 Layout/EmptyLines:
   Enabled: true # 不要な空行を禁止
-  AllowAdjacentCommentLines: true # コメントの間の空行を許可
-  MaxEmptyLines: 1 # 最大空行数を1行に制限
 
 # メトリクス関連ルール（コード量の制限）
 Metrics/MethodLength:
@@ -47,7 +45,7 @@ Style/StringLiterals:
   EnforcedStyle: single_quotes # 文字列リテラルはシングルクォート
 
 Style/HashSyntax:
-  EnforcedStyle: ruby27 # ハッシュは新しい記法を使用
+  EnforcedStyle: ruby19 # ハッシュは新しい記法を使用
 
 Style/GuardClause:
   Enabled: true # 複雑な条件文ではなく、ガード節を推奨
