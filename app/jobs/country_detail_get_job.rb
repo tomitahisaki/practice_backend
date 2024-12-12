@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'csv'
+
 class CountryDetailGetJob < ApplicationJob
   queue_as :default
 
@@ -8,6 +10,7 @@ class CountryDetailGetJob < ApplicationJob
 
     CSV.foreach(csv_file_path, headers: true) do |row|
       process_csv(row)
+      sleep(1)
     end
   end
 
