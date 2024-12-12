@@ -10,7 +10,7 @@ RSpec.describe SampleJob, type: :job do
     let(:data) do
       {
         area_code: '10',
-        area_name: 'Asia',
+        area_name: 'asia',
         country_code: '0060',
         country_name: 'Korea',
         risk_level: 1,
@@ -32,8 +32,24 @@ RSpec.describe SampleJob, type: :job do
 
     subject { described_class.perform_now }
 
+    let(:country_detail) { CountryDetail.last }
+    let(:expected_data) do
+      {
+        area_code: 'asia',
+        area_name: 'asia',
+        country_code: '0060',
+        country_name: 'Korea',
+        risk_level: 'low',
+        infection_level: 'low',
+        visa_information: 'visa_information',
+        stay_notice: 'stay_notice',
+        culture_and_health: 'culture_and_health'
+      }
+    end
+
     it 'creates or updates country detail' do
       expect { subject }.to change { CountryDetail.count }.by(1)
+      expect(country_detail).to have_attributes(expected_data)
     end
   end
 end
