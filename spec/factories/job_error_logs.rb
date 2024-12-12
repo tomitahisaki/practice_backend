@@ -18,6 +18,6 @@ FactoryBot.define do
     detail { '060' }
     error_message { 'Standard error' }
     error_class { 'StandardError' }
-    executed_at Time.zone.now
+    executed_at { Time.zone.now }
   end
 end
