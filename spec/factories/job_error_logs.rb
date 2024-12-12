@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: job_error_logs
@@ -13,6 +15,5 @@
 
 FactoryBot.define do
   factory :job_error_log do
-    
   end
 end
