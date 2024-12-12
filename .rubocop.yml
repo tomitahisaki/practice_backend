@@ -56,6 +56,9 @@ Style/GuardClause:
 Style/NumericLiterals:
   Enabled: true # 大きな数値にはアンダースコアを使用（例: 1_000）
 
+Style/RescueStandardError:
+  Enabled: false
+
 # リンター関連
 Lint/AmbiguousBlockAssociation:
   Enabled: true # 曖昧なブロックの関連付けを禁止

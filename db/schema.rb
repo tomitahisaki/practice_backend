@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_09_210252) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_12_115348) do
   create_table "country_details", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "area_code"
     t.string "area_name"
@@ -21,6 +21,15 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_09_210252) do
     t.text "visa_information"
     t.text "stay_notice"
     t.text "culture_and_health"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "job_error_logs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "detail", null: false
+    t.text "error_message", null: false
+    t.string "error_class", null: false
+    t.datetime "executed_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
