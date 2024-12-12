@@ -24,7 +24,8 @@ RSpec.describe SampleJob, type: :job do
     let(:country_data_fetch_service) { instance_double(CountryDataFetchService) }
 
     before do
-      allow(CountryDataFetchService).to receive(:new).with(country_code: country_code).and_return(country_data_fetch_service)
+      allow(CountryDataFetchService)
+        .to receive(:new).with(country_code: country_code).and_return(country_data_fetch_service)
       allow(country_data_fetch_service).to receive(:fetch_data).and_return(data)
       allow(CountryDetail).to receive(:find_or_initialize_by).and_return(country_detail_instance)
     end

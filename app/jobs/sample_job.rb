@@ -8,6 +8,5 @@ class SampleJob < ApplicationJob
     data = CountryDataFetchService.new(country_code:).fetch_data
     country_detail = CountryDetail.find_or_initialize_by(country_code: country_code)
     country_detail.update!(data)
-    binding.pry
   end
 end

@@ -12,15 +12,15 @@ class CountryDataFetchService
 
   def fetch_data
     {
-      area_code: fetch_text(parse_xml, 'area cd'),
-      area_name: fetch_text(parse_xml, 'area name'),
-      country_code: fetch_text(parse_xml, 'country cd'),
-      country_name: fetch_text(parse_xml, 'country name'),
-      risk_level: risk_level,
-      infection_level: infection_level,
-      visa_information: fetch_text(parse_xml, 'safetyMeasureMainText2'),
-      stay_notice: fetch_text(parse_xml, 'safetyMeasureMainText3'),
-      culture_and_health: fetch_text(parse_xml, 'safetyMeasureMainText4')
+      area_code:,
+      area_name:,
+      country_code:,
+      country_name:,
+      risk_level:,
+      infection_level:,
+      visa_information:,
+      stay_notice:,
+      culture_and_health:
     }
   end
 
@@ -40,6 +40,22 @@ class CountryDataFetchService
     node&.text
   end
 
+  def area_code
+    fetch_text(parse_xml, 'area cd')
+  end
+
+  def area_name
+    fetch_text(parse_xml, 'area name')
+  end
+
+  def country_code
+    fetch_text(parse_xml, 'country cd')
+  end
+
+  def country_name
+    fetch_text(parse_xml, 'country name')
+  end
+
   def risk_level
     4.times do |i|
       return i + 1 if fetch_text(parse_xml, "riskLevel#{i + 1}") == 'Y'
@@ -50,5 +66,17 @@ class CountryDataFetchService
     4.times do |i|
       return i + 1 if fetch_text(parse_xml, "infectionLevel#{i + 1}") == 'Y'
     end
+  end
+
+  def visa_information
+    fetch_text(parse_xml, 'safetyMeasureMainText2')
+  end
+
+  def stay_notice
+    fetch_text(parse_xml, 'safetyMeasureMainText3')
+  end
+
+  def culture_and_health
+    fetch_text(parse_xml, 'safetyMeasureMainText4')
   end
 end
