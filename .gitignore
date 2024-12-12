@@ -28,5 +28,8 @@
 !/tmp/storage/
 !/tmp/storage/.keep
 
+# for scheduled job
+!/tmp/csv/
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
