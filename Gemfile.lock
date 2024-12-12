@@ -91,6 +91,7 @@ GEM
     bullet (8.0.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
+    byebug (11.1.3)
     coderay (1.1.3)
     concurrent-ruby (1.3.4)
     connection_pool (2.4.1)
@@ -193,6 +194,9 @@ GEM
     pry (0.15.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    pry-byebug (3.8.0)
+      byebug (~> 11.0)
+      pry (~> 0.10)
     pry-rails (0.3.11)
       pry (>= 0.13.0)
     psych (5.2.1)
@@ -371,6 +375,7 @@ DEPENDENCIES
   faker
   kamal
   mysql2 (~> 0.5)
+  pry-byebug
   pry-rails
   puma (>= 5.0)
   rack-cors

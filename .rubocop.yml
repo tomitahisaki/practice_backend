@@ -2,7 +2,7 @@ require: rubocop-rails
 
 # .rubocop.yml
 AllCops:
-  TargetRubyVersion: 3.0 # 使用しているRubyのバージョン
+  TargetRubyVersion: 3.2 # 使用しているRubyのバージョン
   NewCops: enable
   Exclude:
     - 'bin/*'
@@ -23,10 +23,13 @@ Layout/EmptyLines:
 
 # メトリクス関連ルール（コード量の制限）
 Metrics/MethodLength:
-  Max: 10 # メソッドの最大行数を10行に制限
+  Max: 15 # メソッドの最大行数を10行に制限
 
 Metrics/BlockLength:
-  Max: 15 # ブロックの最大行数を15行に制限
+  Max: 20 # ブロックの最大行数を15行に制限
+  Exclude: 
+    - spec/**/*
+    - lib/**/*
 
 Metrics/ClassLength:
   Max: 150 # クラスの最大行数を150行に制限

@@ -45,6 +45,7 @@ group :development, :test do
   gem 'bullet'
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
   gem 'faker'
+  gem 'pry-byebug'
   gem 'pry-rails'
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem 'brakeman', require: false
