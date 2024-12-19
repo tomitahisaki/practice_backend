@@ -56,8 +56,8 @@ Style/GuardClause:
 Style/NumericLiterals:
   Enabled: true # 大きな数値にはアンダースコアを使用（例: 1_000）
 
-# Style/RescueStandardError:
-  #  Enabled: false
+Style/RescueStandardError:
+  Enabled: false
 
 Style/SymbolArray:
   EnforcedStyle: percent
