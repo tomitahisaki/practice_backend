@@ -14,8 +14,14 @@ RSpec.describe CountryDetailGetJob, type: :job do
         area_name: 'asia',
         country_code: '0060',
         country_name: 'Korea',
-        risk_level: 1,
-        infection_level: 1,
+        risk_level1: true,
+        risk_level2: false,
+        risk_level3: false,
+        risk_level4: false,
+        infection_level1: true,
+        infection_level2: false,
+        infection_level3: true,
+        infection_level4: false,
         visa_information: 'visa_information',
         stay_notice: 'stay_notice',
         culture_and_health: 'culture_and_health'
@@ -30,7 +36,7 @@ RSpec.describe CountryDetailGetJob, type: :job do
       allow(CountryDetail).to receive(:find_or_initialize_by).and_return(country_detail_instance)
       allow(country_detail_instance).to receive(:update!).and_raise(ActiveRecord::RecordInvalid)
     end
-
+    #  TODO: implement success case
     it 'raises error' do
       expect { subject }.to change { JobErrorLog.count }.by(1)
     end

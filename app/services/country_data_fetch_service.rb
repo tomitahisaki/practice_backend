@@ -16,8 +16,26 @@ class CountryDataFetchService
       area_name:,
       country_code:,
       country_name:,
-      risk_level:,
-      infection_level:,
+      **fetch_levels_data,
+      **fetch_infomation_data
+    }
+  end
+
+  def fetch_levels_data
+    {
+      risk_level1:,
+      risk_level2:,
+      risk_level3:,
+      risk_level4:,
+      infection_level1:,
+      infection_level2:,
+      infection_level3:,
+      infection_level4:
+    }
+  end
+
+  def fetch_infomation_data
+    {
       visa_information:,
       stay_notice:,
       culture_and_health:
@@ -56,16 +74,36 @@ class CountryDataFetchService
     fetch_text(parse_xml, 'country name')
   end
 
-  def risk_level
-    4.times do |i|
-      return i + 1 if fetch_text(parse_xml, "riskLevel#{i + 1}") == 'Y'
-    end
+  def risk_level1
+    fetch_text(parse_xml, 'riskLevel1') == '1'
   end
 
-  def infection_level
-    4.times do |i|
-      return i + 1 if fetch_text(parse_xml, "infectionLevel#{i + 1}") == 'Y'
-    end
+  def risk_level2
+    fetch_text(parse_xml, 'riskLevel2') == '1'
+  end
+
+  def risk_level3
+    fetch_text(parse_xml, 'riskLevel3') == '1'
+  end
+
+  def risk_level4
+    fetch_text(parse_xml, 'riskLevel4') == '1'
+  end
+
+  def infection_level1
+    fetch_text(parse_xml, 'infectionLevel1') == '1'
+  end
+
+  def infection_level2
+    fetch_text(parse_xml, 'infectionLevel2') == '1'
+  end
+
+  def infection_level3
+    fetch_text(parse_xml, 'infectionLevel3') == '1'
+  end
+
+  def infection_level4
+    fetch_text(parse_xml, 'infectionLevel4') == '1'
   end
 
   def visa_information
