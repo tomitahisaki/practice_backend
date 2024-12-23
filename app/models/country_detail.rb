@@ -28,4 +28,6 @@ class CountryDetail < ApplicationRecord
   enum :area_code,
        { asia: '10', oceania: '20', north_america: '30', latin_america: '33', europe: '42', middle_east: '50',
          africa: '60' }
+
+  scope :by_area_code, ->(area_code:) { where(area_code:) }
 end

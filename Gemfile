@@ -55,9 +55,10 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'solargraph'
+
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 group :test do
-  gem 'factory_bot_rails'
-  gem 'rspec-rails'
 end
