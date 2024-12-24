@@ -59,6 +59,17 @@ Style/NumericLiterals:
 Style/RescueStandardError:
   Enabled: false
 
+Style/SymbolArray:
+  EnforcedStyle: percent
+  Enabled: true
+
+Style/WordArray:
+  EnforcedStyle: percent
+  Enabled: true
+
+Style/PercentLiteralDelimiters:
+  Enabled: true
+
 # リンター関連
 Lint/AmbiguousBlockAssociation:
   Enabled: true # 曖昧なブロックの関連付けを禁止

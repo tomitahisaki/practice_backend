@@ -17,14 +17,14 @@ RSpec.describe CountryDataFetchService do
             <cd>0010</cd>
             <name>Japan</name>
           </country>
-          <riskLevel1>Y</riskLevel1>
-          <riskLevel2>N</riskLevel2>
-          <riskLevel3>N</riskLevel3>
-          <riskLevel4>N</riskLevel4>
-          <infectionLevel1>Y</infectionLevel1>
-          <infectionLevel2>N</infectionLevel2>
-          <infectionLevel3>N</infectionLevel3>
-          <infectionLevel4>N</infectionLevel4>
+          <riskLevel1>1</riskLevel1>
+          <riskLevel2>1</riskLevel2>
+          <riskLevel3>0</riskLevel3>
+          <riskLevel4>0</riskLevel4>
+          <infectionLevel1>1</infectionLevel1>
+          <infectionLevel2>0</infectionLevel2>
+          <infectionLevel3>1</infectionLevel3>
+          <infectionLevel4>0</infectionLevel4>
           <safetyMeasureMainText2>visa_information</safetyMeasureMainText2>
           <safetyMeasureMainText3>stay_notice</safetyMeasureMainText3>
           <safetyMeasureMainText4>culture_and_health</safetyMeasureMainText4>
@@ -43,8 +43,14 @@ RSpec.describe CountryDataFetchService do
           area_name: 'Asia',
           country_code: '0010',
           country_name: 'Japan',
-          risk_level: 1,
-          infection_level: 1,
+          risk_level1: true,
+          risk_level2: true,
+          risk_level3: false,
+          risk_level4: false,
+          infection_level1: true,
+          infection_level2: false,
+          infection_level3: true,
+          infection_level4: false,
           visa_information: 'visa_information',
           stay_notice: 'stay_notice',
           culture_and_health: 'culture_and_health'

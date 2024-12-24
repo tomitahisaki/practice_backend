@@ -7,8 +7,14 @@
 #  area_name          :string(255)
 #  country_code       :string(255)
 #  country_name       :string(255)
-#  risk_level         :integer
-#  infection_level    :integer
+#  risk_level1        :boolean
+#  risk_level2        :boolean
+#  risk_level3        :boolean
+#  risk_level4        :boolean
+#  infection_level1   :boolean
+#  infection_level2   :boolean
+#  infection_level3   :boolean
+#  infection_level4   :boolean
 #  visa_information   :text(65535)
 #  stay_notice        :text(65535)
 #  culture_and_health :text(65535)
@@ -18,16 +24,23 @@
 
 # frozen_string_literal: true
 
+# spec/factories/country_details.rb
 FactoryBot.define do
-  factory :contry_detail do
-    area_code { 1 }
-    area_name { 'MyString' }
-    contry_code { 1 }
-    contry_name { 'MyString' }
-    risk_level { 1 }
-    infection_level { 1 }
-    visa_information { 'MyText' }
-    stay_notie { 'MyText' }
-    culture_and_health { 'MyText' }
+  factory :country_detail do
+    area_code { CountryDetail.area_codes.keys.sample }
+    area_name { Faker::Address.community }
+    country_code { Faker::Number.number(digits: 4) }
+    country_name { Faker::Address.country }
+    risk_level1 { Faker::Boolean.boolean }
+    risk_level2 { Faker::Boolean.boolean }
+    risk_level3 { Faker::Boolean.boolean }
+    risk_level4 { Faker::Boolean.boolean }
+    infection_level1 { Faker::Boolean.boolean }
+    infection_level2 { Faker::Boolean.boolean }
+    infection_level3 { Faker::Boolean.boolean }
+    infection_level4 { Faker::Boolean.boolean }
+    visa_information { Faker::Lorem.paragraph }
+    stay_notice { Faker::Lorem.paragraph }
+    culture_and_health { Faker::Lorem.paragraph }
   end
 end
