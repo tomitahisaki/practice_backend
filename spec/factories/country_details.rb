@@ -27,7 +27,7 @@
 # spec/factories/country_details.rb
 FactoryBot.define do
   factory :country_detail do
-    area_code { CountryDetail.area_codes.keys.sample } 
+    area_code { CountryDetail.area_codes.keys.sample }
     area_name { Faker::Address.community }
     country_code { Faker::Number.number(digits: 4) }
     country_name { Faker::Address.country }
@@ -44,4 +44,3 @@ FactoryBot.define do
     culture_and_health { Faker::Lorem.paragraph }
   end
 end
-
