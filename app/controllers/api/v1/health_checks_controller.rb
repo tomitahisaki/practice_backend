@@ -4,7 +4,7 @@ module Api
   module V1
     class HealthChecksController < ApplicationController
       def index
-        render json: { message: 'API is running' }, status: :ok
+        render json: { health_check: 'API is running' }, status: :ok
       end
     end
   end

@@ -9,7 +9,7 @@ RSpec.describe 'Api::V1::HealthChecks', type: :request do
     it 'return a successful response' do
       subject
       expect(response).to have_http_status(200)
-      expect(response.parsed_body['message']).to eq('API is running')
+      expect(response.parsed_body['health_check']).to eq('API is running')
     end
   end
 end
