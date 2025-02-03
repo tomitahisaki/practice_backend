@@ -4,6 +4,6 @@ class SampleJob < ApplicationJob
   queue_as :default
 
   def perform(*_args)
-    # Do something later
+    puts 'Hello World'
   end
 end
