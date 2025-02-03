@@ -4,6 +4,6 @@ class SampleJob < ApplicationJob
   queue_as :default
 
   def perform(*_args)
-    puts 'Hello World'
+    $stdout.puts('Hello World')
   end
 end
