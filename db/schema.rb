@@ -10,36 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_12_115348) do
-  create_table "country_details", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "area_code"
-    t.string "area_name"
-    t.string "country_code"
-    t.string "country_name"
-    t.boolean "risk_level1", default: false
-    t.boolean "risk_level2", default: false
-    t.boolean "risk_level3", default: false
-    t.boolean "risk_level4", default: false
-    t.boolean "infection_level1", default: false
-    t.boolean "infection_level2", default: false
-    t.boolean "infection_level3", default: false
-    t.boolean "infection_level4", default: false
-    t.text "visa_information"
-    t.text "stay_notice"
-    t.text "culture_and_health"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "job_error_logs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "detail", null: false
-    t.text "error_message", null: false
-    t.string "error_class", null: false
-    t.datetime "executed_at", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+ActiveRecord::Schema[8.0].define(version: 2024_12_08_071529) do
   create_table "solid_queue_blocked_executions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "job_id", null: false
     t.string "queue_name", null: false
