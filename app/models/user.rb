@@ -23,4 +23,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   # インスタンス・メソッドやクラス・メソッドを定義する
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
