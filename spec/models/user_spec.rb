@@ -65,6 +65,7 @@ RSpec.describe User, type: :model do
   describe '#full_name' do
     subject { user.full_name }
     context 'first_nameとlast_nameがある時' do
+      let(:first_name) { 'Yamada' }
       it '名前と苗字を結合して返す' do
         is_expected.to eq("#{user.first_name} #{user.last_name}")
       end
