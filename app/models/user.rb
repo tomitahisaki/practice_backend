@@ -7,14 +7,16 @@
 #  id         :integer          not null, primary key
 #  first_name :string(255)      not null
 #  last_name  :string(255)      not null
-#  email      :string(255)      not null
-#  age        :string(255)
+#  email      :string(255)      not null#  age        :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_users_on_email  (email) UNIQUE
+#
 
 class User < ApplicationRecord
-
   # バリデーション
   validates :first_name, presence: true, length: { maximum: 10 }
 

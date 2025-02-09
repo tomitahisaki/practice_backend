@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_05_123849) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_08_024746) do
   create_table "solid_queue_blocked_executions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "job_id", null: false
     t.string "queue_name", null: false
@@ -136,8 +136,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_05_123849) do
     t.string "first_name", null: false, comment: "名前"
     t.string "last_name", null: false, comment: "苗字"
     t.string "email", null: false, comment: "メールアドレス"
-    t.string "age", comment: "年齢"
+    t.integer "age", comment: "年齢"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 end

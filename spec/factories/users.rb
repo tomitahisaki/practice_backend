@@ -8,9 +8,13 @@
 #  first_name :string(255)      not null
 #  last_name  :string(255)      not null
 #  email      :string(255)      not null
-#  age        :string(255)
+#  age        :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_users_on_email  (email) UNIQUE
 #
 
 FactoryBot.define do
