@@ -19,6 +19,8 @@
 class User < ApplicationRecord
   # バリデーション
   validates :first_name, presence: true, length: { maximum: 10 }
+  validates :last_name, presence: true, length: { maximum: 10 }
+  validates :email, presence: true, uniqueness: true
 
   # インスタンス・メソッドやクラス・メソッドを定義する
 end
