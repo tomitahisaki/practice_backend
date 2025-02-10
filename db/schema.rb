@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_08_071529) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_05_123849) do
   create_table "solid_queue_blocked_executions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "job_id", null: false
     t.string "queue_name", null: false
@@ -130,5 +130,14 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_08_071529) do
     t.index ["expires_at"], name: "index_solid_queue_semaphores_on_expires_at"
     t.index ["key", "value"], name: "index_solid_queue_semaphores_on_key_and_value"
     t.index ["key"], name: "index_solid_queue_semaphores_on_key", unique: true
+  end
+
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", comment: "ユーザーテーブル", force: :cascade do |t|
+    t.string "first_name", null: false, comment: "名前"
+    t.string "last_name", null: false, comment: "苗字"
+    t.string "email", null: false, comment: "メールアドレス"
+    t.string "age", comment: "年齢"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 end
