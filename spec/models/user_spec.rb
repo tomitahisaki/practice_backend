@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -21,7 +23,7 @@ RSpec.describe User, type: :model do
   let(:user) do
     build(
       :user,
-      first_name:,
+      first_name:
     )
   end
 
@@ -42,7 +44,7 @@ RSpec.describe User, type: :model do
           @user.first_name = 'あいうえおかきくけこさ'
           expect(@user).to be_invalid
 
-          expect(@user.errors.full_messages).to eq(['First name is too long (maximum is 10 characters)'])
+          expect(@user.errors.full_messages).to eq(['First nameは10文字以内で入力してください)'])
         end
       end
       context 'nilの時' do
