@@ -7,7 +7,8 @@
 #  id         :integer          not null, primary key
 #  first_name :string(255)      not null
 #  last_name  :string(255)      not null
-#  email      :string(255)      not null#  age        :integer
+#  email      :string(255)      not null
+#  age        :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -20,7 +21,7 @@ class User < ApplicationRecord
   # バリデーション
   validates :first_name, presence: true, length: { maximum: 10 }
   validates :last_name, presence: true, length: { maximum: 10 }
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
 
   # インスタンス・メソッドやクラス・メソッドを定義する
   def full_name
