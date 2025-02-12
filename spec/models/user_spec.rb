@@ -39,26 +39,25 @@ RSpec.describe User, type: :model do
         end
       end
       context '11文字の時' do
-        it 'falseを返し、エラーメッセージを返す' do
-          @user = FactoryBot.build(:user)
-          @user.first_name = 'あいうえおかきくけこさ'
-          expect(@user).to be_invalid
+        let(:first_name) { 'a' * 11 }
 
-          expect(@user.errors.full_messages).to eq(['First nameは10文字以内で入力してください'])
+        it 'falseを返し、エラーメッセージを返す' do
+          expect(subject).to eq(false)
+          expect(user.errors.full_messages).to eq(['First nameは10文字以内で入力してください'])
         end
       end
       context 'nilの時' do
+        let(:first_name) { nil }
+
         it 'falseを返す' do
-          @user = FactoryBot.build(:user)
-          @user.first_name = nil
-          expect(@user).to be_invalid
+          expect(subject).to eq(false)
         end
       end
       context '空文字の時' do
+        let(:first_name) { '' }
+
         it 'falseを返す' do
-          @user = FactoryBot.build(:user)
-          @user.first_name = ''
-          expect(@user).to be_invalid
+          expect(subject).to eq(false)
         end
       end
     end
