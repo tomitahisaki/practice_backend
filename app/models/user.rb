@@ -22,6 +22,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { maximum: 10 }
   validates :last_name, presence: true, length: { maximum: 10 }
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
+  validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
 
   # インスタンス・メソッドやクラス・メソッドを定義する
   def full_name
