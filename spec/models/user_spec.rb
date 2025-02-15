@@ -155,8 +155,9 @@ RSpec.describe User, type: :model do
       context '-1の時' do
         let(:age) { -1 }
 
-        it 'falseを返す' do
+        it 'falseを返して、エラーメッセージを返す' do
           expect(subject).to eq(false)
+          expect(user.errors.full_messages).to eq(['Ageは0以上の値にしてください'])
         end
       end
       context '文字列の時' do
