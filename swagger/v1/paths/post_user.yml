@@ -1,0 +1,55 @@
+post:
+  summary: Create a new user
+  tags: [User]
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            user:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  example: John
+                last_name:
+                  type: string
+                  example: Doe
+                age:
+                  type: integer
+                  example: 30
+                email:
+                  type: string
+                  example: "sample@example.com"
+                  nullable: true
+  responses:
+    "204":
+      description: No content
+    "422":
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  first_name:
+                    type: array
+                    items:
+                      type: string
+                  last_name:
+                    type: array
+                    items:
+                      type: string
+                  age:
+                    type: array
+                    items:
+                      type: string
+                  email:
+                    type: array
+                    items:
+                      type: string
