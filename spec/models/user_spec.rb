@@ -131,6 +131,19 @@ RSpec.describe User, type: :model do
           expect(user.errors.full_messages).to eq(%w[Emailを入力してください Emailは不正な値です])
         end
       end
+      context 'emailが重複した時' do
+        before do
+          user.save!
+
+          @another_user = build(:user)
+          @another_user.email = user.email
+        end
+
+        it 'falseを返し、エラーメッセージを返す' do
+          expect(@another_user.valid?).to eq(false)
+          expect(@another_user.errors.full_messages).to eq(['Emailはすでに存在します'])
+        end
+      end
     end
 
     context 'age' do
