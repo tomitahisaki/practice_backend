@@ -30,14 +30,15 @@ RSpec.describe User, type: :model do
     )
   end
 
+  let(:first_name) { 'first_name' }
+  let(:last_name) { 'last_name' }
+  let(:email) { 'sample@example.com' }
+  let(:age) { 20 }
+
   describe 'validation' do
     subject { user.valid? }
 
     context 'first_name' do
-      let(:last_name) { 'last_name' }
-      let(:email) { 'example@example.com' }
-      let(:age) { 20 }
-
       context '10文字の時' do
         let(:first_name) { 'a' * 10 }
 
@@ -72,10 +73,6 @@ RSpec.describe User, type: :model do
     end
 
     context 'last_name' do
-      let(:first_name) { 'first_name' }
-      let(:email) { 'example@example.com' }
-      let(:age) { 20 }
-
       context '10文字の時' do
         let(:last_name) { 'a' * 10 }
 
@@ -110,10 +107,6 @@ RSpec.describe User, type: :model do
     end
 
     context 'email' do
-      let(:first_name) { 'first_name' }
-      let(:last_name) { 'first_name' }
-      let(:age) { 20 }
-
       context '認められたformatではない時' do
         let(:email) { 'example-example.com' }
 
@@ -141,10 +134,6 @@ RSpec.describe User, type: :model do
     end
 
     context 'age' do
-      let(:first_name) { 'Yamada' }
-      let(:last_name) { 'Taro' }
-      let(:email) { 'example@example.com' }
-
       context '0の時' do
         let(:age) { 0 }
 
@@ -189,11 +178,6 @@ RSpec.describe User, type: :model do
     subject { user.full_name }
 
     context 'first_nameとlast_nameがある時' do
-      let(:first_name) { 'Yamada' }
-      let(:last_name) { 'Taro' }
-      let(:email) { 'example@example.com' }
-      let(:age) { 20 }
-
       it '名前と苗字を結合して返す' do
         is_expected.to eq("#{user.first_name} #{user.last_name}")
       end
