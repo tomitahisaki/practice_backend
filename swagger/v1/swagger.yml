@@ -6,6 +6,8 @@ info:
 paths:
   /health_checks:
     $ref: "./paths/health_checks.yml"
+  /user:
+    $ref: "./paths/post_user.yml"
 
 # components:
 #   securitySchemes:
