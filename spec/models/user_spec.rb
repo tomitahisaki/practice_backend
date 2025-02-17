@@ -133,15 +133,12 @@ RSpec.describe User, type: :model do
       end
       context 'emailが重複した時' do
         before do
-          user.save!
-
-          @another_user = build(:user)
-          @another_user.email = user.email
+          create(:user, email: 'sample@example.com')
         end
 
         it 'falseを返し、エラーメッセージを返す' do
-          expect(@another_user.valid?).to eq(false)
-          expect(@another_user.errors.full_messages).to eq(['Emailはすでに存在します'])
+          expect(subject).to eq(false)
+          expect(user.errors.full_messages).to eq(['Emailはすでに存在します'])
         end
       end
     end
