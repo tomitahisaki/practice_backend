@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :health_checks, only: %i[index]
+      resources :users
 
       scope '/:area_code' do
         resources :country_alerts, only: %i[index]
