@@ -5,20 +5,9 @@ info:
   version: v1
 paths:
   /health_checks:
-    get:
-      summary: Health check
-      tags: [Health Check]
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  health_check:
-                    type: string
-                    example: API is running
+    $ref: "./paths/health_checks.yml"
+  /user:
+    $ref: "./paths/post_user.yml"
 
 # components:
 #   securitySchemes:
