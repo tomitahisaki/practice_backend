@@ -1,0 +1,35 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  /health_checks:
+    get:
+      summary: Health check
+      tags: [Health Check]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  health_check:
+                    type: string
+                    example: API is running
+
+# components:
+#   securitySchemes:
+#     Bearer:
+#       description: Bearer token
+#       type: apiKey
+#       name: Authorization
+#       in: header
+
+# security:
+#   - Bearer: []
+
+servers:
+  - url: http://0.0.0.0:3000/api/v1
